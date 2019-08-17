@@ -1,6 +1,15 @@
 #include "risc_v_enc.h"
+#include <iostream>
+#include <fstream>
 
 rv_instr    *rv_instr_p;
+
+struct prog_instr {
+    int     addr;
+    int     instr;
+};
+
+prog_instr *prog_dump;
 
 unsigned int prog[] =   {
                             0x0400006f,     //   0: 0400006f    jal     zero,40 
@@ -113,7 +122,31 @@ unsigned int prog[] =   {
                             0x0000006f      // 1ac: 0000006f    jal     zero,1ac
                         };
 
+    int prog_size = 0;
+
+void load_test_program() {
+    ifstream prog_file("program_file/program.hex", fstream::in);
+    string my_line;
+    while( true ) {
+        cout << prog_size << endl;
+        prog_dump = new prog_instr[prog_size+1];
+        if( !getline(prog_file, my_line) ) {
+            //cout << "0x" << hex << prog_dump[prog_size].addr << " " << "0x" << hex << prog_dump[prog_size].instr << endl;
+            break;
+        }
+        cout << my_line;
+        //cout << "0x" << hex << prog_dump[prog_size].addr << " " << "0x" << hex << prog_dump[prog_size].instr << endl;
+        prog_size++;
+    }
+    cout << endl;
+    prog_file.close();
+    //for( int i = 0 ; i < prog_size ; i++ ) {
+    //    cout << "0x" << hex << prog_dump[prog_size].addr << " " << "0x" << hex << prog_dump[prog_size].instr << endl;
+    //}
+}
+
 int main() {
+    load_test_program();
     rv_instr_p = new rv_instr();
     cout << "Test program" << endl;
     cout << "Program size = " << sizeof(prog) / 4 << endl;

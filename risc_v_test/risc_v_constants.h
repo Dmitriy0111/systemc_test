@@ -1,0 +1,79 @@
+#define     RVI         0b11
+
+#define     R_OP_0      0b01100 
+#define     U_OP_0      0b01101 
+#define     U_OP_1      0b00101 
+#define     J_OP_0      0b11011 
+#define     S_OP_0      0b01000 
+#define     B_OP_0      0b11000 
+#define     I_OP_0      0b00100 
+#define     I_OP_1      0b00000 
+#define     I_OP_2      0b11001 
+#define     CSR_OP_0    0b11100
+// B type instruction
+#define     BEQ_F3      0b000
+#define     BNE_F3      0b001
+#define     BLT_F3      0b100
+#define     BGE_F3      0b101
+#define     BLTU_F3     0b110
+#define     BGEU_F3     0b111
+// Store instructions
+#define     SB_F3       0b000
+#define     SH_F3       0b001
+#define     SW_F3       0b010
+// R type instructions
+#define     ADD_F3      0b000
+#define     SUB_F3      0b000
+#define     SLL_F3      0b001
+#define     SLT_F3      0b010
+#define     SLTU_F3     0b011
+#define     XOR_F3      0b100
+#define     SRL_F3      0b101
+#define     SRA_F3      0b101
+#define     OR_F3       0b110
+#define     AND_F3      0b111
+// I type instructions
+// immediate data
+#define     ADDI_F3     ADD_F3
+#define     SLLI_F3     SLL_F3
+#define     SLTI_F3     SLT_F3
+#define     SLTUI_F3    SLTU_F3
+#define     XORI_F3     XOR_F3
+#define     SRLI_F3     SRL_F3
+#define     SRAI_F3     SRA_F3
+#define     ORI_F3      OR_F3
+#define     ANDI_F3     AND_F3
+// load instructions
+#define     LB_F3       0b000
+#define     LH_F3       0b001
+#define     LW_F3       0b010
+#define     LBU_F3      0b100
+#define     LHU_F3      0b101
+// jump and link instructions
+#define     JALR_F3     0b000
+
+#define     SRA_F7      0b0100000
+#define     SRAI_F7     SRA_F7
+#define     SUB_F7      0b000000
+
+// CSR instructions
+// F3 field
+#define     WFI_F3      0b000
+#define     MRET_F3     0b000
+#define     ECALL_F3    0b000
+#define     EBREAK_F3   0b000
+#define     CSRRW_F3    0b001
+#define     CSRRS_F3    0b010
+#define     CSRRC_F3    0b011
+#define     CSRRWI_F3   0b101
+#define     CSRRSI_F3   0b110
+#define     CSRRCI_F3   0b111
+// F12 field
+#define     WFI_F12     0b000100000101
+#define     MRET_F12    0b001100000010
+#define     ECALL_F12   0b000000000000
+#define     EBREAK_F12  0b000000000001
+// zero fields
+#define     Z_F3        0b000
+#define     Z_F7        0b0000000
+#define     Z_F12       0b000000000000
